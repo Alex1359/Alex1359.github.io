@@ -149,34 +149,47 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">country</th>\
-                        <td class="visible-with-data" id="country">' + (feature.properties['country'] !== null ? autolinker.link(feature.properties['country'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Country</th>\
+                        <td class="visible-with-data" id="country">' + 
+                        (feature.properties['country'] !== null ? autolinker.link(feature.properties['country'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">region</th>\
-                        <td class="visible-with-data" id="region">' + (feature.properties['region'] !== null ? autolinker.link(feature.properties['region'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Region</th>\
+                        <td class="visible-with-data" id="region">' + 
+                        (feature.properties['region'] !== null ? autolinker.link(feature.properties['region'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">name </th>\
-                        <td class="visible-with-data" id="name ">' + (feature.properties['name '] !== null ? autolinker.link(feature.properties['name '].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Name of place </th>\
+                        <td class="visible-with-data" id="name ">' + 
+                        (feature.properties['name '] !== null ? autolinker.link(feature.properties['name '].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">battle_name</th>\
-                        <td class="visible-with-data" id="battle_name">' + (feature.properties['battle_name'] !== null ? autolinker.link(feature.properties['battle_name'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Name of Battle </th>\
+                        <td class="visible-with-data" id="battle_name">' + 
+                        (feature.properties['battle_name'] !== null ? autolinker.link(feature.properties['battle_name'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">battle_date_begin</th>\
-                        <td class="visible-with-data" id="battle_date_begin">' + (feature.properties['battle_date_begin'] !== null ? autolinker.link(feature.properties['battle_date_begin'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Date</th>\
+                        <td class="visible-with-data" id="battle_date_begin">' + 
+                        (feature.properties['battle_date_begin'] !== null ? autolinker.link(feature.properties['battle_date_begin'].toLocaleString()) : '') + '</td>\
+                    </tr>';
+
+if (feature.properties['battle_date_end'] !== null && feature.properties['battle_date_end'] !== 0) {
+    popupContent += '<tr>\
+                        <th scope="row">Date end</th>\
+                        <td class="visible-with-data" id="battle_date_end">' + 
+                        autolinker.link(feature.properties['battle_date_end'].toLocaleString()) + '</td>\
                     </tr>\
-                    <tr>\
-                        <th scope="row">battle_date_end</th>\
-                        <td class="visible-with-data" id="battle_date_end">' + (feature.properties['battle_date_end'] !== null ? autolinker.link(feature.properties['battle_date_end'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">battle_victory</th>\
-                        <td class="visible-with-data" id="battle_victory">' + (feature.properties['battle_victory'] !== null ? autolinker.link(feature.properties['battle_victory'].toLocaleString()) : '') + '</td>\
-                    </tr>\
+                    ';
+}
+
+popupContent += '<tr>\
+                    <th scope="row">Victory</th>\
+                    <td class="visible-with-data" id="battle_victory">' + 
+                    (feature.properties['battle_victory'] !== null ? autolinker.link(feature.properties['battle_victory'].toLocaleString()) : '') + '</td>\
+                </tr>\
                 </table>';
+
             layer.bindPopup(popupContent, {maxHeight: 400});
             var popup = layer.getPopup();
             var content = popup.getContent();
